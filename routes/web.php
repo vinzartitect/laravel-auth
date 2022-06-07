@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+// localhost: 8080/home
+Route::get('/home', 'HomeController@index')->name('home');
