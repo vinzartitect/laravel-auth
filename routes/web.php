@@ -19,5 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// localhost: 8080/home
-Route::get('/admin', 'HomeController@index')->name('admin.home');
+// localhost: 8080/admin
+
+Route::middleware('auth')
+->prefix('admin') //legato alla uri
+->name('admin.') 
+->namespace('Admin')
+->group( function(){
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('posts', 'PostController');
+});
