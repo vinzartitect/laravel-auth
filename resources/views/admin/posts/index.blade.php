@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container">
+
+        @if (session('message'))
+            <div class="alert alert-danger">
+                {{ session('message') }}
+            </div>
+        @endif
+
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -23,8 +30,13 @@
                         <img src="{{ $post->image }}" alt="{{ $post->title }}" width="50">
                     </td>
                     <td> {{ $post->slug }} </td>
-                    <td>
+                    <td class="d-flex">
                         <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary">View</a>
+                        <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>                    
                 @empty
