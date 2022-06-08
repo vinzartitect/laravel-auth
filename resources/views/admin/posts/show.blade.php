@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <img src="{{ $post->image }}" alt="$post->title">
+    <img src="{{ $post->image }}" alt="$post->title" width="50%">
     <h2>{{ $post->title }}</h2>
     <p>{{ $post->content }}</p>
     {{-- <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST" class="delete-form">

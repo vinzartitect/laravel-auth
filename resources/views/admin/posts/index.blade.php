@@ -9,6 +9,8 @@
             </div>
         @endif
 
+        <a href=" {{route('admin.posts.create')}} " class="btn btn-success">Crea post</a>
+
         <table class="table table-dark">
             <thead>
                 <tr>
