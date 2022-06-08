@@ -32,7 +32,7 @@
                     <td> {{ $post->slug }} </td>
                     <td class="d-flex">
                         <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary">View</a>
-                        <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST">
+                        <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST" class="delete-form">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -46,4 +46,19 @@
             </tbody>
         </table>
     </div>
+
 @endsection
+
+@section('scripts')
+<script>
+    const deleteForms = document.querySelectorAll('.delete-form');
+    deleteForms.forEach( form =>{
+        form.addEventListener('submit', (e) =>{
+            e.preventDefault();
+            const confirmation = confirm('Sei sicuro di voler eliminare il dato?');
+            if (confirmation) e.target.submit();
+        });
+    });
+</script>    
+@endsection
+
